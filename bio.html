@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    background-image: url('tech.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    }
+    .profile-img {
+      width: 150px;
+      border-radius: 50%;
+      margin-top: 1rem;
+    
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .skills, .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex: 1 1 200px;
+    }
+    form {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #333;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+   
+  </style>
+</head>
+<body>
+
+  <header>
+    <header>
+        <h1>Welcome to My Website 🌍</h1>
+      </header>
+      <section id="home">
+        <h2>Home</h2>
+        <div class="container">
+           
+            <p id="location">Getting your location...</p>
+            <p id="weather">Fetching weather data...</p>
+        </div
+        <div id="weather"></div>
+     
+        <script>
+          const weatherDiv = document.getElementById('weather');
+          const apiKey = 'e730ff700f51fd6f09f4bbf2f513b79d'; // Replace this with your OpenWeatherMap API key
+      
+          function getWeather(lat, lon) {
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+      
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                const { name, main, weather } = data;
+                weatherDiv.innerHTML = `
+                  <h2>${name}</h2>
+                  <p>Temperature: ${main.temp} °C</p>
+                  <p>Condition: ${weather[0].description}</p>
+                `;
+              })
+              .catch(error => {
+                weatherDiv.innerHTML = `<p>Error fetching weather: ${error.message}</p>`;
+              });
+          }
+      
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                position => {
+                  const { latitude, longitude } = position.coords;
+                  getWeather(latitude, longitude);
+                },
+                error => {
+                  weatherDiv.innerHTML = `<p>Geolocation error: ${error.message}</p>`;
+                }
+              );
+            } else {
+              weatherDiv.innerHTML = "<p>Geolocation not supported by this browser.</p>";
+            }
+          }
+      
+          getLocation();
+        </script>
+       
+    
+  </header>
+
+  <section>
+    <img src="Phumz-removebg-preview.png" alt="Image description">
+    <h1>Phumzile Nhambe</h1>
+    <p>Java SE8 Programming | Data analysis | Web development</p>
+    <h2>About Me</h2>
+    <p>
+      I'm a tech enthusiast who loves to design using canva, wordpress and applying languages such java.
+    </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card">Java</div>
+      <div class="card">HTML</div>
+      <div class="card">CSS</div>
+      <div class="card">C#</div>
+      <div class="card">Woedpress</div>
+      <div class="card">Canva</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>A personal website deployed in github,using html and CSS.</p>
+      </div>
+      <div class="card">
+        <h3>APS score calculator</h3>
+        <p>A C# application to calculate APS score for school subject, less than 30 is not qualified.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact Me</h2>
+    <div class="links">
+        <div class="card">
+            <a href="https://linkedin.com/in/phumzile-nhambe-a85b50108">linkedin</a>
+            <a href="https://padlet.com/nhambephumzile/phumzile-s-profile-3zkdjdhci4m5">Padlet</a>
+
+  </section>
+
+
+</body>
+</html>
