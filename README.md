@@ -1,1 +1,1 @@
-Welcome to my profile. Here you find out more about skills and achievements,  link to my padlet  and linkedin available to showcase my experiences,qualifications and projets. Look out for a weather and location feature on the home page.
+Welcome to my profile. Here you will find out more about my skills and achievements,  link to my padlet  and linkedin available to showcase my experiences,qualifications and projets. Look out for a weather and location feature on the home page.
